@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="section">
+<table class="table">
+    <tr>
+        <th>Vrienden</th>
+        <th>Acties</th>
+    </tr>
+    <tr *ngFor="let f of (vrienden | async)">
+        <td>
+            {{f.gebruikerTo.gebruikersnaam}}
+        </td>
+        <td>
+            <button class="btn" (click)="add(f)">Voeg Toe</button>
+        </td>
+    </tr>
+</table>
+</div>
+</div>

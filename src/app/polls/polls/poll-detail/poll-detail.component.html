@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="section">
+        <h1>{{poll?.naam}}</h1>
+        <table class="table">
+            <tr>
+                <th>Optie</th>
+                <th>Acties</th>
+                <th *ngIf="gestemd">Aantal stemmen</th>
+            </tr>
+            <tr *ngFor="let o of (opties | async)">
+                <td>
+                    {{o.naam}}
+                </td>
+                <td>
+                    <button class="btn" (click)="deleteOptie(o)">Delete</button>
+                    <button class="btn" *ngIf="gestemd==false" (click)="stem(o)">Stem</button>
+                </td>
+                <td *ngIf="gestemd">
+                    <p>{{o.count}}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="section" *ngIf="gestemd">
+            <form (ngSubmit)="onWijzigStem()">
+                <button class="btn" type="submit">Stem wijzigen</button>
+            </form>
+        </div>
+    <div class="section">
+        <h2>Opties toevoegen</h2>
+        <form #pollForm="ngForm" (ngSubmit)="onSave()">
+            <p>Optie:
+                <input class="form-control" type="text" id="naam" #naam="ngModel" [(ngModel)]="model.Naam" name="naam" /></p>
+            <button class="btn" type="submit">Opslaan</button>
+        </form>
+    </div>
+</div>

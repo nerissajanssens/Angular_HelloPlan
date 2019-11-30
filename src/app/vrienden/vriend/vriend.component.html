@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="section">
+        <form [formGroup]="gebruikerForm" (ngSubmit)="voegToe()">
+            <label for="gebruikersnaam">Gebruikersnaam: </label><br>
+            <input class="form-control" id="gebruikersnaam" formControlName="gebruikersnaam" type="text">
+            <button class="btn" type="submit">Voeg Toe</button>
+        </form>
+    </div>
+    <div class="section">
+        <table class="table">
+            <tr>
+                <th>Vrienden</th>
+            </tr>
+            <tr *ngFor="let f of (vrienden | async)">
+                <td>
+                    {{f.gebruikerTo.gebruikersnaam}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="section">
+        <table class="table">
+            <tr>
+                <th>Verzoek</th>
+                <th>Acties</th>
+            </tr>
+            <tr *ngFor="let r of (verzoeken | async)">
+                <td>
+                    {{r.gebruikerFrom.gebruikersnaam}}
+                </td>
+                <td>
+                    <button class="btn" (click)="confirm(r)">Accepteren</button>
+                    <button class="btn" (click)="delete(r)">Afwijzen</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

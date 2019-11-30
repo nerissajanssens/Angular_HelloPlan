@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="section">
+    <button class="btn" (click)="createPoll()">Maak nieuwe poll</button>
+    <table class="table">
+        <tr>
+            <th>Poll</th>
+            <th>Acties</th>
+        </tr>
+        <tr *ngFor="let p of (user?.pollGebruikers)">
+            <td>
+                {{p.poll.naam}}
+            </td>
+            <td>
+                <button class="btn" (click)="deletePoll(p)">Delete</button>
+                <button class="btn" (click)="bekijkPoll(p)">Bekijk</button>
+                <button class="btn" (click)="addVrienden(p)">Voeg vrienden toe</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="section">
+    <app-poll-create *ngIf="create"></app-poll-create>
+</div>
+</div>

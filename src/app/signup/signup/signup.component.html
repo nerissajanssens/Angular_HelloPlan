@@ -1,0 +1,59 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Registreer</h2>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['wachtwoord', 'confirmwachtwoord']" novalidate>
+                    <div class="form-group">
+                        <label for="voornaam">Voornaam</label>
+                        <input type="text" class="form-control" name="voornaam" [(ngModel)]="model.voornaam" #voornaam="ngModel" [ngClass]="{ 'is-invalid': f.submitted && voornaam.invalid }" required />
+                        <div *ngIf="f.submitted && voornaam.invalid" class="invalid-feedback">
+                            <div *ngIf="voornaam.errors.required">Voornaam is verplicht!</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="naam">Naam</label>
+                        <input type="text" class="form-control" name="naam" [(ngModel)]="model.naam" #naam="ngModel" [ngClass]="{ 'is-invalid': f.submitted && naam.invalid }" required />
+                        <div *ngIf="f.submitted && naam.invalid" class="invalid-feedback">
+                            <div *ngIf="naam.errors.required">Naam is verplicht!</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gebruikersnaam">Gebruikersnaam</label>
+                        <input type="text" class="form-control" name="naam" [(ngModel)]="model.gebruikersnaam" #gebruikersnaam="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gebruikersnaam.invalid }" required />
+                        <div *ngIf="f.submitted && gebruikersnaam.invalid" class="invalid-feedback">
+                            <div *ngIf="gebruikersnaam.errors.required">Gebruikersnaam is verplicht!</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+                        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Email is verplicht!</div>
+                            <div *ngIf="email.errors.email">Gelieve een geldig email in te voeren</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="wachtwoord">Wachtwoord</label>
+                        <input type="password" class="form-control" name="wachtwoord" [(ngModel)]="model.wachtwoord" #wachtwoord="ngModel" [ngClass]="{ 'is-invalid': f.submitted && wachtwoord.invalid }" required minlength="6" />
+                        <div *ngIf="f.submitted && wachtwoord.invalid" class="invalid-feedback">
+                            <div *ngIf="wachtwoord.errors.required">wachtwoord is verplicht!</div>
+                            <div *ngIf="wachtwoord.errors.minlength">wachtwoord moet ten minste 6 karakters bevatten</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmwachtwoord">Bevestig wachtwoord</label>
+                        <input type="password" class="form-control" name="confirmwachtwoord" [(ngModel)]="model.confirmwachtwoord" #confirmwachtwoord="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirmwachtwoord.invalid }" required />
+                        <div *ngIf="f.submitted && confirmwachtwoord.invalid" class="invalid-feedback">
+                            <div *ngIf="confirmwachtwoord.errors.required">Bevestig wachtwoord is verplicht!</div>
+                            <div *ngIf="confirmwachtwoord.errors.mustMatch">wachtwoords komen niet overeen</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn">Registreer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

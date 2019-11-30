@@ -1,0 +1,5 @@
+<form #pollForm="ngForm" (ngSubmit)="onCreate()">
+    <p>Titel:
+        <input class="form-control" type="text" id="naam" #naam="ngModel" [(ngModel)]="model.naam" name="naam" /></p>
+    <button type="submit">Opslaan</button>
+</form>
